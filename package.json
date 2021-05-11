@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/eagleduk/wetube-reloaded/issues"
   },
-  "homepage": "https://github.com/eagleduk/wetube-reloaded#readme"
+  "homepage": "https://github.com/eagleduk/wetube-reloaded#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
