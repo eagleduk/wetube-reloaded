@@ -1,10 +1,12 @@
 1. 개발환경
-   - 설치 순으로 진행 @babel/node 부터는 permission 에러가 발생하여 관리자 권한으로 설치 진행.
    1. express
    1. @babel/core
    1. @babel/preset-env
    1. @babel/node
+      - permission 에러가 발생하여 관리자 권한으로 설치 진행.
    1. nodemon
+      - permission 에러가 발생하여 관리자 권한으로 설치 진행.
+   1. morgan
 
 ### \* route
 
@@ -22,3 +24,4 @@
 
 - Browser 에서 request 가 발생하였을 때 response 하기 전에 request 를 가진 채 거쳐 가는 곳 (경유지)
 - 모든 middleware 가 response 가 될 수 있고, 모든 response 가 middleware 가 될 수 있다.
+- 모든 response 에 대하여 middleware 라고 정의 할 수 있다.
