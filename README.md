@@ -7,6 +7,7 @@
    1. nodemon
       - permission 에러가 발생하여 관리자 권한으로 설치 진행.
    1. morgan
+   1. pug
 
 ### \* route
 
