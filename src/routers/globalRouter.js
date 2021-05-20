@@ -1,8 +1,9 @@
 import express from "express";
-import { home } from "../controllers/videoController";
+import { home, search } from "../controllers/videoController";
 
 const router = express.Router();
 
 router.get("/", home);
+router.get("/search", search);
 
 export default router;

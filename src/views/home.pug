@@ -1,6 +1,7 @@
-extends ./partials/base.pug
+extends ./base.pug
+include ./mixins/video
 
 block content
-    h1 Home
-    input(placeholder="TEST")
-    button TEST
+    div
+        each video in videos
+            +video(video)

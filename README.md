@@ -14,6 +14,7 @@
       - iteration
       - mixins
    1. mongoose
+      - model 을 정의하기 전에, custom function 을 만들어 사용할 수 있다.
 
 ### \* route
 
