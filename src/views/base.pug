@@ -10,6 +10,16 @@ html
                 ul
                     li
                         a(href="/") Home
+                    if(isLoggin)
+                        li
+                            a(href="/logout") LogOut
+                        li
+                            a(href="") #{logginUser.username}'s Profile
+                    else
+                        li
+                            a(href="/join") Join
+                        li
+                            a(href="/login") Login
                     li
                         a(href="/video/upload") Upload
                     li 

@@ -15,6 +15,17 @@
       - mixins
    1. mongoose
       - model 을 정의하기 전에, custom function 을 만들어 사용할 수 있다.
+   1. bcrypt
+      - password 를 암호화(hash) 및 비교할 수 있다.
+   1. express-session
+      - 사용자의 정보를 저장 cookie 에 저장할 수 있다.
+   1. connect-mongo
+      - session 을 mongoDB 에 저장할 수 있게 해준다.
+   1. dotenv
+      - 환경설정 파일을 읽어서 process.env 에 저장해 준다.
+      - 최상위 js 에서 import 를 해주어야 하위 모든 곳에서 사용가능하다. ( 무엇보다 제일 먼저 실행이 되어야 한다)
+   1. node-fetch
+      - nodejs 에서 fetch 명령어를 가능하게 해준다.
 
 ### \* route
 
