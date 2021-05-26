@@ -11,10 +11,8 @@ const schema = new mongoose.Schema({
     require: true,
     unique: true,
   },
-  password: {
-    type: "String",
-    require: true,
-  },
+  avatar_url: "String",
+  password: "String",
 });
 
 schema.pre("save", async function () {

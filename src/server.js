@@ -10,6 +10,7 @@ import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
+import githubRouter from "./routers/githubRouter";
 import { localMiddelware } from "./localMiddleware";
 
 const logger = morgan("dev");
@@ -39,5 +40,6 @@ app.use(localMiddelware);
 app.use("/", globalRouter);
 app.use("/user", userRouter);
 app.use("/video", videoRouter);
+app.use("/github", githubRouter);
 
 export default app;
