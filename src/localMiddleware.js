@@ -4,7 +4,7 @@ export const localMiddleware = (req, res, next) => {
   res.locals.isLoggin = Boolean(req.session.user);
   res.locals.logginUser = req.session.user;
   res.locals.siteName = "Wetube";
-  console.log(req.session.user);
+  console.log(req.session.user?.password);
   next();
 };
 

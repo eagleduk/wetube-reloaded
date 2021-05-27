@@ -12,11 +12,14 @@ const schema = new mongoose.Schema({
     unique: true,
   },
   avatarUrl: "String",
-  password: "String",
+  password: {
+    type: "String",
+    default: undefined,
+  },
 });
 
 schema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 5);
+  if (this.password) this.password = await bcrypt.hash(this.password, 5);
 });
 
 const User = mongoose.model("User", schema);

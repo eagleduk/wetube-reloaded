@@ -58,7 +58,6 @@ export const githubCallback = async (req, res) => {
         avatarUrl: avatar_url,
         username: login,
         email: email,
-        password: "",
       });
     }
     req.session.loggedIn = true;

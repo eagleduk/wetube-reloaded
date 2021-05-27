@@ -78,7 +78,7 @@ export const postEdit = async (req, res) => {
     body: { username },
     file,
   } = req;
-  console.log(file);
+
   const user = await User.findByIdAndUpdate(
     _id,
     {
@@ -90,4 +90,41 @@ export const postEdit = async (req, res) => {
   req.session.user = user;
 
   return res.redirect("edit");
+};
+
+export const getChange = (req, res) => {
+  return res.render("user/change", { pageTitle: "Change Password" });
+};
+
+export const postChange = async (req, res) => {
+  const {
+    session: {
+      user: { _id, password },
+    },
+    body: { oldPassword, newPassword, new1Password },
+  } = req;
+
+  const user = await User.findById(_id);
+  if (password) {
+    const pwCorrect = await bcrypt.compare(oldPassword, user.password);
+    if (!pwCorrect) {
+      return res.status(400).render("user/change", {
+        pageTitle: "Change Password",
+        errorMessage: "Current Password are not correct.",
+      });
+    }
+  }
+  if (newPassword !== new1Password) {
+    return res.status(400).render("user/change", {
+      pageTitle: "Change Password",
+      errorMessage: "New Passwords are not correct.",
+    });
+  }
+
+  user.password = newPassword;
+  await user.save();
+
+  req.session.user = user;
+
+  return res.redirect("change");
 };
