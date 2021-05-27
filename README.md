@@ -26,6 +26,8 @@
       - 최상위 js 에서 import 를 해주어야 하위 모든 곳에서 사용가능하다. ( 무엇보다 제일 먼저 실행이 되어야 한다)
    1. node-fetch
       - nodejs 에서 fetch 명령어를 가능하게 해준다.
+   1. multer
+      - upload 된 file 을 저장해준다.
 
 ### \* route
 

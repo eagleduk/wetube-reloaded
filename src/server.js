@@ -11,7 +11,7 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import githubRouter from "./routers/githubRouter";
-import { localMiddelware } from "./localMiddleware";
+import { localMiddleware } from "./localMiddleware";
 
 const logger = morgan("dev");
 
@@ -35,7 +35,8 @@ app.use(
   })
 );
 
-app.use(localMiddelware);
+app.use(localMiddleware);
+app.use("/uploads", express.static("uploads/"));
 
 app.use("/", globalRouter);
 app.use("/user", userRouter);

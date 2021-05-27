@@ -6,7 +6,7 @@ export const home = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-  return res.render("upload", { pageTitle: "Upload" });
+  return res.render("video/upload", { pageTitle: "Upload" });
 };
 
 export const postUpload = async (req, res) => {
@@ -34,18 +34,16 @@ export const watch = async (req, res) => {
   if (!video) {
     return res.render("404", { pageTitle: "Video not found." });
   }
-  return res.render("watch", { pageTitle: video.title, video });
+  return res.render("video/watch", { pageTitle: video.title, video });
 };
 
 export const getEdit = async (req, res) => {
-  console.log(req.params);
   const { id } = req.params;
-  console.log(id);
   const video = await Video.findById(id);
   if (!video) {
     return res.render("404", { pageTitle: "Video not found." });
   }
-  return res.render("edit", { pageTitle: video.title, video });
+  return res.render("video/edit", { pageTitle: video.title, video });
 };
 
 export const postEdit = async (req, res) => {

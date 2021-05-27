@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
     require: true,
     unique: true,
   },
-  avatar_url: "String",
+  avatarUrl: "String",
   password: "String",
 });
 

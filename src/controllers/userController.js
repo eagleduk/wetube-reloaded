@@ -35,10 +35,10 @@ export const getLogin = (req, res) => {
 };
 
 export const postLogin = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   const user = await User.findOne({
-    username,
+    email,
   });
 
   if (!user) {
@@ -64,4 +64,30 @@ export const postLogin = async (req, res) => {
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
+};
+
+export const getEdit = (req, res) => {
+  return res.render("user/edit", { pageTitle: "Edit" });
+};
+
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id, avatarUrl },
+    },
+    body: { username },
+    file,
+  } = req;
+  console.log(file);
+  const user = await User.findByIdAndUpdate(
+    _id,
+    {
+      username,
+      avatarUrl: file ? file.path : avatarUrl,
+    },
+    { new: true }
+  );
+  req.session.user = user;
+
+  return res.redirect("edit");
 };

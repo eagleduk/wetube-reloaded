@@ -7,13 +7,14 @@ import {
   logout,
 } from "../controllers/userController";
 import { home, search } from "../controllers/videoController";
+import { privateMiddleware, publicMiddleware } from "../localMiddleware";
 
 const router = express.Router();
 
 router.get("/", home);
 router.get("/search", search);
-router.route("/join").get(getJoin).post(postJoin);
-router.route("/login").get(getLogin).post(postLogin);
-router.get("/logout", logout);
+router.route("/join").all(publicMiddleware).get(getJoin).post(postJoin);
+router.route("/login").all(publicMiddleware).get(getLogin).post(postLogin);
+router.get("/logout", privateMiddleware, logout);
 
 export default router;

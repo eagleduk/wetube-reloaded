@@ -12,16 +12,18 @@ html
                         a(href="/") Home
                     if(isLoggin)
                         li
+                            a(href="/user/edit") Edit Profile
+                        li
                             a(href="/logout") LogOut
                         li
                             a(href="") #{logginUser.username}'s Profile
+                        li
+                            a(href="/video/upload") Upload
                     else
                         li
                             a(href="/join") Join
                         li
                             a(href="/login") Login
-                    li
-                        a(href="/video/upload") Upload
                     li 
                         a(href="/search") Search
         main
