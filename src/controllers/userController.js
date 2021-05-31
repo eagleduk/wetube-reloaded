@@ -128,3 +128,13 @@ export const postChange = async (req, res) => {
 
   return res.redirect("change");
 };
+
+export const see = async (req, res) => {
+  const { id } = req.params;
+
+  const user = await User.findById(id).populate("videos");
+  return res.render("user/profile", {
+    pageTitle: `${user.username}'s Profile`,
+    user,
+  });
+};

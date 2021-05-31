@@ -28,6 +28,15 @@ const schema = new mongoose.Schema({
       default: 0,
     },
   },
+  owner: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  videoUrl: {
+    type: String,
+    required: true,
+  },
 });
 
 schema.static("splitHashtages", (hashtags) => {

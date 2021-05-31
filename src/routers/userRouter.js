@@ -4,6 +4,7 @@ import {
   postEdit,
   getChange,
   postChange,
+  see,
 } from "../controllers/userController";
 import { privateMiddleware, uploadAvatar } from "../localMiddleware";
 
@@ -16,5 +17,7 @@ router
   .post(uploadAvatar.single("avatar"), postEdit);
 
 router.route("/change").all(privateMiddleware).get(getChange).post(postChange);
+
+router.route("/:id").get(see);
 
 export default router;

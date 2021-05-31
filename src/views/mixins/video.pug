@@ -1,7 +1,7 @@
 mixin video(video)
     div
         h3
-            a(href=`video/${video.id}`)= video.title
+            a(href=`/video/${video.id}`)= video.title
         ul
             each hashtag in video.hashtags
                 li= hashtag

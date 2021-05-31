@@ -16,10 +16,18 @@ const schema = new mongoose.Schema({
     type: "String",
     default: undefined,
   },
+  videos: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Video",
+    },
+  ],
 });
 
 schema.pre("save", async function () {
-  if (this.password) this.password = await bcrypt.hash(this.password, 5);
+  if (this.password)
+    if (this.isModified("password"))
+      this.password = await bcrypt.hash(this.password, 5);
 });
 
 const User = mongoose.model("User", schema);

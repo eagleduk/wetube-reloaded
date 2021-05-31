@@ -4,7 +4,6 @@ export const localMiddleware = (req, res, next) => {
   res.locals.isLoggin = Boolean(req.session.user);
   res.locals.logginUser = req.session.user;
   res.locals.siteName = "Wetube";
-  console.log(req.session.user?.password);
   next();
 };
 
@@ -24,4 +23,6 @@ export const publicMiddleware = (req, res, next) => {
   }
 };
 
-export const uploadAvatar = multer({ dest: "uploads/" });
+export const uploadAvatar = multer({ dest: "uploads/avatar" });
+
+export const uploadVideo = multer({ dest: "uploads/video" });
