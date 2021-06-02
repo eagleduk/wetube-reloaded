@@ -28,6 +28,24 @@
       - nodejs 에서 fetch 명령어를 가능하게 해준다.
    1. multer
       - upload 된 file 을 저장해준다.
+   1. webpack, webpack-cli
+      - dev 로 설치
+      - 지정한 파일들을 지정항 loader 로 팩킹을 해준다.
+   1. sass
+      - dev 로 설치
+   1. sass-loader
+      - dev 로 설치
+      - scss 파일들을 css 형식으로 변환해 준다.
+   1. css-loader
+      - dev 로 설치
+   1. style-loader
+      - dev 로 설치
+      - css 형식으로 변환된 style 들을 html 파일에 style 태그 안에 넣어준다.
+   1. mini-css-extract-plugin
+      - dev 로 설치
+      - css 파일을 html 파일에 넣지 않고, css 파일로 내보내 준다.
+   1. babel-loader
+      - dev 로 설치
 
 ### \* route
 

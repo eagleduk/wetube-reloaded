@@ -7,7 +7,7 @@ import {
   postEdit,
   remove,
 } from "../controllers/videoController";
-import { uploadVideo } from "../localMiddleware";
+import { privateMiddleware, uploadVideo } from "../localMiddleware";
 
 const router = express.Router();
 
