@@ -13,7 +13,7 @@ block content
             each hashtag in video.hashtags
                 li= hashtag
 
-    if String(video.owner._id) === String(logginUser._id)
+    if isLoggin && String(video.owner._id) === String(logginUser._id)
         a(href=`${video.id}/edit`) Edit Video &xrarr;
         br
         a(href=`${video.id}/remove`) Delete Video &xrarr;

@@ -2,7 +2,7 @@ import User from "../models/User";
 import Video from "../models/Video";
 
 export const home = async (req, res) => {
-  const videos = await Video.find({}).sort({ createAt: -1 });
+  const videos = await Video.find({}).sort({ createAt: -1 }).populate("owner");
   return res.render("home", { pageTitle: "Home", videos });
 };
 
@@ -45,6 +45,7 @@ export const watch = async (req, res) => {
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
+  console.log(video);
   return res.render("video/watch", { pageTitle: video.title, video });
 };
 
@@ -90,7 +91,9 @@ export const search = async (req, res) => {
       title: {
         $regex: new RegExp(keyword, "i"),
       },
-    }).sort({ createAt: -1 });
+    })
+      .sort({ createAt: -1 })
+      .populate("owner");
   }
   return res.render("search", { pageTitle: "Search Video", videos });
 };
