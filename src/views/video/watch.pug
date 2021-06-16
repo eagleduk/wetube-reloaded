@@ -1,19 +1,44 @@
 extends ../base
 
 block content
-    div
-        video(src=`/${video.videoUrl}` controls)
-        h3= video.title
-        p= video.description
-        small= video.createAt
-        br
-        small upload by 
-        a(href=`/user/${video.owner._id}`)= video.owner.username
-        ul
-            each hashtag in video.hashtags
-                li= hashtag
+    div#videoContainer
+        video(src=`/${video.videoUrl}`)
+        div.videoControls
+            div.videoControls__play
+                span#play.videoControls__playBtn
+                    i.fas.fa-play
+                div.videoControls__time
+                    span#currentTime 00:00:00
+                    span  / 
+                    span#durationTime 00:00:00
 
+            input#timeBar(type="range", min=0, step=1, value=0)
+
+            div.videoControls__volume
+                span#volume 
+                    i.fas.fa-volume-up
+                input#volumeBar(type="range", min=0, max=1, step=0.01, value=0.5)
+            div                
+                span#screenControl 
+                    i.fas.fa-expand
+
+
+    //-
+        div
+            h3= video.title
+            p= video.description
+            small= video.createAt
+            br
+            small upload by 
+            a(href=`/user/${video.owner._id}`)= video.owner.username
+            ul
+                each hashtag in video.hashtags
+                    li= hashtag
+        
     if isLoggin && String(video.owner._id) === String(logginUser._id)
         a(href=`${video.id}/edit`) Edit Video &xrarr;
         br
         a(href=`${video.id}/remove`) Delete Video &xrarr;
+
+block scripts
+    script(src="/static/js/videoController.js") 

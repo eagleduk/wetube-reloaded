@@ -3,10 +3,13 @@ const path = require("path");
 
 module.exports = {
   watch: true,
-  entry: "./src/client/js/main.js",
+  entry: {
+    main: "./src/client/js/main.js",
+    videoController: "./src/client/js/videoController.js",
+  },
   output: {
     path: path.resolve(__dirname, "asset"),
-    filename: "js/main.js",
+    filename: "js/[name].js",
     clean: true,
   },
   mode: "development",
