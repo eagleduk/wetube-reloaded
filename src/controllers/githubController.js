@@ -62,6 +62,7 @@ export const githubCallback = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
+    req.flash("info", "Log in Success with Github");
     return res.redirect("/");
   } else {
     return res.redirect("/login");

@@ -30,6 +30,7 @@ export const postUpload = async (req, res) => {
     user.videos.push(video.id);
     await user.save();
 
+    req.flash("success", "Upload Success!");
     return res.redirect(`/video/${video._id}`);
   } catch (error) {
     return res.status(400).render("video/upload", {

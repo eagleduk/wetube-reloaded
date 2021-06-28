@@ -5,6 +5,7 @@ import express from "express";
 import session from "express-session";
 import morgan from "morgan";
 import MongoStore from "connect-mongo";
+import flash from "express-flash";
 
 /* Router */
 import globalRouter from "./routers/globalRouter";
@@ -35,7 +36,9 @@ app.use(
   })
 );
 
+app.use(flash());
 app.use(localMiddleware);
+
 app.use("/uploads", express.static("uploads/"));
 app.use("/static", express.static("asset/"));
 

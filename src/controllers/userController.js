@@ -57,11 +57,13 @@ export const postLogin = async (req, res) => {
   }
 
   req.session.user = user;
+  req.flash("info", "Log in Success.");
 
   return res.redirect("/");
 };
 
 export const logout = (req, res) => {
+  req.flash("info", "Log out Sucess.");
   req.session.destroy();
   return res.redirect("/");
 };

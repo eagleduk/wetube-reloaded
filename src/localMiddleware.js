@@ -11,6 +11,7 @@ export const privateMiddleware = (req, res, next) => {
   if (req.session.user) {
     return next();
   } else {
+    req.flash("error", "Login first.");
     return res.redirect("/");
   }
 };

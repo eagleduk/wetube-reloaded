@@ -46,6 +46,8 @@
       - css 파일을 html 파일에 넣지 않고, css 파일로 내보내 준다.
    1. babel-loader
       - dev 로 설치
+   1. express-flash
+      - 한번 사용하고 삭제되는 message 기능 구현이 가능하다.
 
 ### \* route
 
