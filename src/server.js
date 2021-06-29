@@ -23,6 +23,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   // cookie 에 관한 여러가지 옵션을 결정한다.
   session({

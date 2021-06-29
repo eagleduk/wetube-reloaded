@@ -37,6 +37,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
 });
 
 schema.static("splitHashtages", (hashtags) => {

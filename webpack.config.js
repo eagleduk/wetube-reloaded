@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     main: "./src/client/js/main.js",
     videoController: "./src/client/js/videoController.js",
+    commentSection: "./src/client/js/commentSection.js",
   },
   output: {
     path: path.resolve(__dirname, "asset"),

@@ -22,6 +22,11 @@ block content
                 span#screenControl 
                     i.fas.fa-expand
 
+    if isLoggin && String(video.owner._id) === String(logginUser._id)
+        a(href=`${video.id}/edit`) Edit Video &xrarr;
+        br
+        a(href=`${video.id}/remove`) Delete Video &xrarr;
+
     div
         h3= video.title
         p= video.description
@@ -32,11 +37,23 @@ block content
         ul
             each hashtag in video.hashtags
                 li= hashtag
-        
-    if isLoggin && String(video.owner._id) === String(logginUser._id)
-        a(href=`${video.id}/edit`) Edit Video &xrarr;
-        br
-        a(href=`${video.id}/remove`) Delete Video &xrarr;
+
+    if isLoggin
+        div.video__add-comments
+            form.video__comment-form#commentForm
+                textarea(cols="100", rows="5", placeholder="Write a nice commment...")
+                input(type="submit", value="Add")
+            
+    div.video__comments
+        ul
+            each comment in video.comments.reverse()
+                li.video__comment(data-id=comment.id)
+                    i.fas.fa-comment
+                    span  #{comment.text}
+                    span ❌
+
 
 block scripts
-    script(src="/static/js/videoController.js") 
+    script(src="/static/js/videoController.js")
+    if isLoggin
+        script(src="/static/js/commentSection.js")
