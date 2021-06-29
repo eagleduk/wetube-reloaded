@@ -1,7 +1,7 @@
 extends ../base
 
 block content
-    div#videoContainer
+    div#videoContainer(data-id=video._id)
         video(src=`/${video.videoUrl}`)
         div.videoControls
             div.videoControls__play
@@ -22,18 +22,16 @@ block content
                 span#screenControl 
                     i.fas.fa-expand
 
-
-    //-
-        div
-            h3= video.title
-            p= video.description
-            small= video.createAt
-            br
-            small upload by 
-            a(href=`/user/${video.owner._id}`)= video.owner.username
-            ul
-                each hashtag in video.hashtags
-                    li= hashtag
+    div
+        h3= video.title
+        p= video.description
+        small= video.createAt
+        br
+        small upload by 
+        a(href=`/user/${video.owner._id}`)= video.owner.username
+        ul
+            each hashtag in video.hashtags
+                li= hashtag
         
     if isLoggin && String(video.owner._id) === String(logginUser._id)
         a(href=`${video.id}/edit`) Edit Video &xrarr;

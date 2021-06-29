@@ -1,3 +1,5 @@
+const { default: fetch } = require("node-fetch");
+
 const videoContainer = document.querySelector("#videoContainer");
 
 const videoEle = document.querySelector("video");
@@ -55,6 +57,15 @@ const handleLoadedMetaData = (e) => {
   timeBar.max = duration;
 };
 
+const handleVideoEnded = (e) => {
+  const {
+    dataset: { id },
+  } = videoContainer;
+  fetch(`/api/video/${id}`, {
+    method: "GET",
+  });
+};
+
 const handleTimeBar = (e) => {
   const {
     target: { value },
@@ -82,5 +93,6 @@ timeBar.addEventListener("input", handleTimeBar);
 
 videoEle.addEventListener("timeupdate", handlePlayingVideo);
 videoEle.addEventListener("loadeddata", handleLoadedMetaData);
+videoEle.addEventListener("ended", handleVideoEnded);
 
 screenBtn.addEventListener("click", handleScreenBtn);
