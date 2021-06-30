@@ -48,6 +48,8 @@
       - dev 로 설치
    1. express-flash
       - 한번 사용하고 삭제되는 message 기능 구현이 가능하다.
+   1. regenerator-runtime
+   1. @babel/plugin-transform-runtime
 
 ### \* route
 
