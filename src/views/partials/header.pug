@@ -20,7 +20,7 @@ header
                         if logginUser.avatarUrl === ""
                             span 😀
                         else
-                            img.header__avatar(src="/" + logginUser.avatarUrl)
+                            img.header__avatar(src=logginUser.avatarUrl)
             else
                 li
                     a(href="/login") Login

@@ -1,17 +1,41 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
+const commentContainer = document.querySelector("div.video__comments");
+
+const deleteNode = (e) => {
+  const { parentNode } = e.target;
+
+  const id = parentNode.dataset.id;
+  console.log(id);
+
+  fetch(`/api/comment/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  parentNode.remove();
+};
 
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
+
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
+
   const icon = document.createElement("i");
   icon.className = "fas fa-comment";
+
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
+
   const span2 = document.createElement("span");
+  span2.classList = "deleteBtn";
   span2.innerText = "❌";
+  span2.addEventListener("click", deleteNode);
+
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(span2);
@@ -42,4 +66,7 @@ const handleAddComment = async (event) => {
 
 if (form) {
   form.addEventListener("submit", handleAddComment);
+  commentContainer.querySelectorAll("span.deleteBtn").forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", deleteNode);
+  });
 }

@@ -50,6 +50,8 @@
       - 한번 사용하고 삭제되는 message 기능 구현이 가능하다.
    1. regenerator-runtime
    1. @babel/plugin-transform-runtime
+   1. multer-s3
+   1. aws-sdk
 
 ### \* route
 

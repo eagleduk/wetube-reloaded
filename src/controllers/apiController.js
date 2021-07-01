@@ -18,7 +18,7 @@ export const addVideoComment = async (req, res) => {
     body: { text },
     params: { id },
   } = req;
-  console.log(user, text, id);
+
   const video = await Video.findById(id);
   if (!video) {
     return res.sendStatus(404);
@@ -31,4 +31,12 @@ export const addVideoComment = async (req, res) => {
   video.comments.push(comment._id);
   video.save();
   return res.status(201).json({ newCommentId: comment._id });
+};
+
+export const deleteComment = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  await Comment.findByIdAndRemove(id);
 };
